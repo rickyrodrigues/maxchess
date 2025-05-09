@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MaxChess | Chess Tournament & Workshop Platform</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container nav-container">
+            <a href="#" class="logo">
+                <i class="fas fa-chess-knight"></i> Max chess
+            </a>
+            <div class="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="#" class="nav-link active">Home</a></li>
+                <li class="nav-item"><a href="#tournaments" class="nav-link">Tournaments</a></li>
+                <li class="nav-item"><a href="#workshops" class="nav-link">Workshops</a></li>
+                <li class="nav-item"><a href="#live" class="nav-link">Live Chess</a></li>
+                <li class="nav-item"><a href="#" class="nav-link btn">Sign Up</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="chess-piece" style="top: 10%; left: 10%;">♜</div>
+        <div class="chess-piece" style="top: 20%; left: 80%;">♞</div>
+        <div class="chess-piece" style="top: 70%; left: 15%;">♝</div>
+        <div class="chess-piece" style="top: 60%; left: 75%;">♛</div>
+        <div class="chess-piece" style="top: 30%; left: 40%;">♚</div>
+        <div class="chess-piece" style="top: 80%; left: 50%;">♟</div>
+        
+        <div class="container hero-content">
+            <h1>Unleash Your Strategic Potential</h1>
+            <p>Join the world's most engaging chess tournaments and workshops. Learn from grandmasters, compete with players from around the globe, and become part of our thriving chess community.</p>
+            <div>
+                <a href="#tournaments" class="btn">Explore Tournaments</a>
+                <a href="#workshops" class="btn btn-outline">Browse Workshops</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Why Choose Max chess</h2>
+            <div class="features">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <h3 class="feature-title">Expert-Led Tournaments</h3>
+                    <p>Participate in tournaments organized by chess professionals with international experience and FIDE certification.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                    </div>
+                    <h3 class="feature-title">Masterclass Workshops</h3>
+                    <p>Learn advanced strategies and techniques from grandmasters through our interactive online workshops.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3 class="feature-title">Vibrant Community</h3>
+                    <p>Connect with chess enthusiasts from around the world, share insights, and make lifelong friendships.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tournaments Section -->
+    <section id="tournaments" class="section tournaments">
+        <div class="container">
+            <h2 class="section-title">Upcoming Tournaments</h2>
+            <div class="tournament-grid">
+                <div class="tournament-card">
+                    <div class="tournament-image">
+                        <img src="images/tournament-1.jpg" alt="Spring Chess Championship">
+                    </div>
+                    <div class="tournament-content">
+                        <span class="tournament-date">May 15-17, 2025</span>
+                        <h3 class="tournament-title">Spring Chess Championship</h3>
+                        <p class="tournament-info">A three-day tournament featuring players from all skill levels. Cash prizes for winners in each category.</p>
+                        <div class="tournament-meta">
+                            <span><i class="fas fa-map-marker-alt"></i> New York, NY</span>
+                            <span><i class="fas fa-user"></i> 64 Players</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="tournament-card">
+                    <div class="tournament-image">
+                        <img src="images/tournament-2.jpg" alt="Online Blitz Tournament">
+                    </div>
+                    <div class="tournament-content">
+                        <span class="tournament-date">June 5-6, 2025</span>
+                        <h3 class="tournament-title">Online Blitz Tournament</h3>
+                        <p class="tournament-info">Fast-paced online tournament with 5-minute games. Open to players of all nationalities.</p>
+                        <div class="tournament-meta">
+                            <span><i class="fas fa-globe"></i> Online</span>
+                            <span><i class="fas fa-user"></i> Unlimited</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="tournament-card">
+                    <div class="tournament-image">
+                        <img src="images/tournament-3.jpg" alt="Junior Chess Open">
+                    </div>
+                    <div class="tournament-content">
+                        <span class="tournament-date">July 10-12, 2025</span>
+                        <h3 class="tournament-title">Junior Chess Open</h3>
+                        <p class="tournament-info">Special tournament for players under 18. Great opportunity for young talents to showcase their skills.</p>
+                        <div class="tournament-meta">
+                            <span><i class="fas fa-map-marker-alt"></i> London, UK</span>
+                            <span><i class="fas fa-user"></i> 32 Players</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-3">
+                <a href="#" class="btn">View All Tournaments</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Workshops Section -->
+    <section id="workshops" class="section">
+        <div class="container">
+            <h2 class="section-title">Chess Workshops</h2>
+            <div class="workshops-grid">
+                <div class="workshop-card">
+                    <div class="workshop-image">
+                        <img src="images/workshop-1.jpg" alt="Chess Fundamentals">
+                        <span class="workshop-level">Beginner</span>
+                    </div>
+                    <div class="workshop-content">
+                        <h3 class="workshop-title">Chess Fundamentals</h3>
+                        <div class="workshop-instructor">
+                            <div class="instructor-avatar">
+                                <img src="images/instructor-1.jpg" alt="Sarah Johnson">
+                            </div>
+                            <div>
+                                <strong>Sarah Johnson</strong>
+                                <div>FIDE Master</div>
+                            </div>
+                        </div>
+                        <p>Master the basics of chess with this comprehensive course for beginners. Learn piece movements, basic tactics, and essential strategies.</p>
+                        <div class="workshop-footer">
+                            <div>
+                                <i class="far fa-clock"></i> 8 Sessions
+                            </div>
+                            <div class="workshop-price">$99</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="workshop-card">
+                    <div class="workshop-image">
+                        <img src="images/workshop-2.jpg" alt="Advanced Openings">
+                        <span class="workshop-level">Intermediate</span>
+                    </div>
+                    <div class="workshop-content">
+                        <h3 class="workshop-title">Advanced Openings</h3>
+                        <div class="workshop-instructor">
+                            <div class="instructor-avatar">
+                                <img src="images/instructor-2.jpg" alt="Michael Chen">
+                            </div>
+                            <div>
+                                <strong>Michael Chen</strong>
+                                <div>International Master</div>
+                            </div>
+                        </div>
+                        <p>Dive deep into strategic opening play. Master powerful opening systems and learn how to counter common responses from your opponents.</p>
+                        <div class="workshop-footer">
+                            <div>
+                                <i class="far fa-clock"></i> 6 Sessions
+                            </div>
+                            <div class="workshop-price">$149</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="workshop-card">
+                    <div class="workshop-image">
+                        <img src="images/workshop-3.jpg" alt="Grandmaster Endgame Techniques">
+                        <span class="workshop-level">Advanced</span>
+                    </div>
+                    <div class="workshop-content">
+                        <h3 class="workshop-title">Grandmaster Endgame Techniques</h3>
+                        <div class="workshop-instructor">
+                            <div class="instructor-avatar">
+                                <img src="images/instructor-3.jpg" alt="Elena Petrov">
+                            </div>
+                            <div>
+                                <strong>Elena Petrov</strong>
+                                <div>Grandmaster</div>
+                            </div>
+                        </div>
+                        <p>Learn the endgame techniques used by top grandmasters. This workshop will significantly improve your ability to convert advantages into wins.</p>
+                        <div class="workshop-footer">
+                            <div>
+                                <i class="far fa-clock"></i> 5 Sessions
+                            </div>
+                            <div class="workshop-price">$199</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-3">
+                <a href="#" class="btn">View All Workshops</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="section testimonials">
+        <div class="container">
+            <h2 class="section-title">What Our Members Say</h2>
+            <div class="testimonial-container">
+                <div class="testimonial active">
+                    <div class="testimonial-avatar">
+                        <img src="images/testimonial-1.jpg" alt="John Doe">
+                    </div>
+                    <p class="testimonial-text">"Max chess transformed my approach to the game. The workshops are incredibly insightful, and the tournaments are well-organized with players from all over the world. It's more than just a chess platform; it's a community."</p>
+                    <div class="testimonial-author">John Doe</div>
+                    <div class="testimonial-position">Chess Enthusiast</div>
+                </div>
+                <div class="testimonial">
+                    <div class="testimonial-avatar">
+                        <img src="images/testimonial-2.jpg" alt="Sarah Smith">
+                    </div>
+                    <p class="testimonial-text">"As a parent of a young chess player, I've seen tremendous growth in my daughter's skills since joining Max chess. The junior tournaments provide a supportive environment for young players to develop their talents."</p>
+                    <div class="testimonial-author">Sarah Smith</div>
+                    <div class="testimonial-position">Parent</div>
+                </div>
+                <div class="testimonial">
+                    <div class="testimonial-avatar">
+                        <img src="images/testimonial-3.jpg" alt="Mark Johnson">
+                    </div>
+                    <p class="testimonial-text">"The quality of instruction at Max chess workshops is unmatched. I've participated in several online sessions, and each one has provided valuable insights that have directly improved my gameplay."</p>
+                    <div class="testimonial-author">Mark Johnson</div>
+                    <div class="testimonial-position">Club Player</div>
+                </div>
+            </div>
+            <div class="testimonial-nav">
+                <div class="testimonial-dot active" data-index="0"></div>
+                <div class="testimonial-dot" data-index="1"></div>
+                <div class="testimonial-dot" data-index="2"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Live Chess Section -->
+    <section id="live" class="section live-chess">
+        <div class="container">
+            <h2 class="section-title">Live Chess</h2>
+            <div class="chess-board-container">
+                <div class="chess-board" id="chess-board">
+                    <!-- Chess board will be generated by JavaScript -->
+                </div>
+                <div class="chess-controls">
+                    <button class="chess-control-btn" id="start-btn">New Game</button>
+                    <button class="chess-control-btn" id="reset-btn">Reset</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter">
+        <div class="container newsletter-container">
+            <h2 class="newsletter-title">Stay Updated</h2>
+            <p>Subscribe to our newsletter to receive updates about upcoming tournaments, workshops, and chess news.</p>
+            <form class="newsletter-form">
+                <input type="email" class="newsletter-input" placeholder="Your email address" required>
+                <button type="submit" class="newsletter-btn">Subscribe</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-container">
+            <div class="footer-column">
+                <h3>About Us</h3>
+                <ul class="footer-links">
+                    <li class="footer-link"><a href="#">Our Story</a></li>
+                    <li class="footer-link"><a href="#">Team</a></li>
+                    <li class="footer-link"><a href="#">Careers</a></li>
+                    <li class="footer-link"><a href="#">Press</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Resources</h3>
+                <ul class="footer-links">
+                    <li class="footer-link"><a href="#">Blog</a></li>
+                    <li class="footer-link"><a href="#">Chess Lessons</a></li>
+                    <li class="footer-link"><a href="#">Strategy Guides</a></li>
+                    <li class="footer-link"><a href="#">Chess News</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Support</h3>
+                <ul class="footer-links">
+                    <li class="footer-link"><a href="#">Help Center</a></li>
+                    <li class="footer-link"><a href="#">Contact Us</a></li>
+                    <li class="footer-link"><a href="#">FAQs</a></li>
+                    <li class="footer-link"><a href="#">Community Guidelines</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Connect With Us</h3>
+                <p>Follow us on social media for daily chess puzzles, tips, and updates.</p>
+                <div class="social-links">
+                    <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <p>&copy; 2025 Max chess. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Registration Modal -->
+    <div class="modal" id="register-modal">
+        <div class="modal-content">
+            <button class="modal-close" id="modal-close"><i class="fas fa-times"></i></button>
+            <h2 class="modal-title">Register for Max chess</h2>
+            <form id="register-form">
+                <div class="form-group">
+                    <label for="name" class="form-label">Full Name</label>
+                    <input type="text" id="name" class="form-input" required>
+                </div>
+                <div class="form-group">
+                    <label for="email" class="form-label">Email Address</label>
+                    <input type="email" id="email" class="form-input" required>
+                </div>
+                <div class="form-group">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" id="password" class="form-input" required>
+                </div>
+                <div class="form-group">
+                    <label for="level" class="form-label">Chess Experience</label>
+                    <select id="level" class="form-select" required>
+                        <option value="">Select your level</option>
+                        <option value="beginner">Beginner</option>
+                        <option value="intermediate">Intermediate</option>
+                        <option value="advanced">Advanced</option>
+                        <option value="master">Master</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn">Create Account</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+</body>
+</html>
