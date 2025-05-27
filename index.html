@@ -4,31 +4,487 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MaxChess | Chess Tournament & Workshop Platform</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Custom CSS -->
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --text-color: #2c3e50;
+            --light-bg: #f8f9fa;
+            --dark-bg: #343a40;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+        }
+        
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.5rem;
+        }
+        
+        .hero-section {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            background-attachment: fixed;
+            color: white;
+            position: relative;
+            overflow: hidden;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+        }
+        
+        .chess-piece {
+            position: absolute;
+            font-size: 3rem;
+            opacity: 0.1;
+            animation: float 6s ease-in-out infinite;
+            color: white;
+        }
+
+    
+        
+        .tournament-image {
+ position: relative; /* Needed for absolute positioning of the date */
+ overflow: hidden; /* Clip images that exceed the container */
+ width: 100%; /* Make the image container take full width */
+ aspect-ratio: 16 / 9; /* Optional: Maintain a specific aspect ratio */
+}
+
+.tournament-image img {
+ display: block; /* Remove default inline spacing */
+ width: 100%; /* Make the image scale to the container width */
+ height: 100%; /* Make the image scale to the container height */
+ object-fit: cover; /* Maintain aspect ratio and cover the entire container */
+}
+
+.tournament-date {
+ position: absolute;
+ top: 10px;
+ right: 10px;
+ background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+ color: white;
+ padding: 5px 10px;
+ border-radius: 5px;
+ font-size: 0.9rem;
+ z-index: 1; /* Ensure it's above the image */
+}
+
+.tournament-card .tournament-image img {
+    width: 100%;
+    height: 200px; /* Adjust height as needed */
+    object-fit: cover;
+    display: block;
+    border-top-left-radius: 0.5rem;
+    border-top-right-radius: 0.5rem;
+}
+
+.tournament-card .tournament-image {
+    height: 200px; /* Should match image height */
+    overflow: hidden;
+    position: relative;
+}
+
+.workshop-card .workshop-image img {
+    width: 100%;
+    height: 200px; /* Adjust height as needed */
+    object-fit: cover;
+    display: block;
+    border-top-left-radius: 0.5rem;
+    border-top-right-radius: 0.5rem;
+}
+
+.workshop-card .workshop-image {
+    height: 200px; /* Should match image height */
+    overflow: hidden;
+    position: relative;
+}
+
+
+.testimonial-card .testimonial-avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin: 0 auto 1.5rem auto;
+    border: 3px solid var(--primary);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .hero-stats {
+            display: flex;
+            gap: 2rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-number {
+            display: block;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #fff;
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
+        .btn-custom {
+            background: var(--accent-color);
+            border: none;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin-bottom: 1.5rem;
+        }
+        
+        .btn-custom:hover {
+            background: #c0392b;
+            transform: translateY(-2px);
+        }
+        
+        .btn-outline-custom {
+            border: 2px solid white;
+            color: white;
+            padding: 10px 28px;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin-bottom: 1.5rem;
+        }
+        
+        .btn-outline-custom:hover {
+            background: white;
+            color: var(--primary-color);
+        }
+        
+        .feature-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border: none;
+            height: 100%;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+        
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            color: white;
+            font-size: 1.5rem;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 3rem;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
+            border-radius: 2px;
+        }
+        
+        .tournament-card, .workshop-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+        
+        .tournament-card:hover, .workshop-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+        
+        .tournament-image, .workshop-image {
+            height: 200px;
+            background: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .tournament-date, .workshop-level {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--accent-color);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .tournament-meta {
+            display: flex;
+            gap: 1rem;
+            margin: 1rem 0;
+            flex-wrap: wrap;
+        }
+        
+        .tournament-meta span {
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        .chess-board {
+            display: grid;
+            grid-template-columns: repeat(8, 1fr);
+            grid-template-rows: repeat(8, 1fr);
+            width: 100%;
+            max-width: 500px;
+            aspect-ratio: 1;
+            border: 3px solid var(--primary-color);
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 0 auto;
+        }
+        
+        .chess-square {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .chess-square:nth-child(odd) {
+            background: #f0d9b5;
+        }
+        
+        .chess-square:nth-child(even) {
+            background: #b58863;
+        }
+        
+        .chess-square:hover {
+            background: var(--secondary-color);
+            color: white;
+        }
+        
+        .testimonial-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            text-align: center;
+            height: 100%;
+        }
+        
+        .testimonial-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            background: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
+        }
+        
+        .testimonial-rating {
+            color: #ffc107;
+            margin-bottom: 1rem;
+        }
+        
+        .faq-item {
+            background: white;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .faq-question {
+            padding: 1.5rem;
+            border: none;
+            background: none;
+            width: 100%;
+            text-align: left;
+            font-weight: 600;
+            font-size: 1.1rem;
+            display: flex;
+            justify-content: between;
+            align-items: center;
+            cursor: pointer;
+        }
+        
+        .faq-answer {
+            padding: 0 1.5rem 1.5rem;
+            display: none;
+        }
+        
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+        
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .newsletter-section {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 4rem 0;
+        }
+        
+        .footer {
+            background: #1a1a1a;
+            color: white;
+            padding: 3rem 0 1rem;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            width: 40px;
+            height: 40px;
+            background: var(--secondary-color);
+            border-radius: 50%;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            margin-right: 0.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background: var(--accent-color);
+            transform: translateY(-2px);
+        }
+        
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--accent-color);
+            border: none;
+            border-radius: 50%;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+            display: none;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+        
+        .back-to-top:hover {
+            background: #c0392b;
+            transform: translateY(-2px);
+        }
+        
+        .loading-spinner {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            color: white;
+            text-align: center;
+        }
+        
+        .spinner i {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        @media (max-width: 768px) {
+            .hero-stats {
+                justify-content: center;
+            }
+            
+            .stat-item {
+                min-width: 120px;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
 </head>
 <body>
-    <!-- Header -->
-    <header class="header">
-        <div class="container nav-container">
-            <a href="#" class="logo">
-                <i class="fas fa-chess-knight"></i> Max chess
-            </a>
-            <div class="hamburger">
-                <i class="fas fa-bars"></i>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#"><i class="fas fa-chess-knight me-2"></i>MaxChess</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#tournaments">Tournaments</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#workshops">Workshops</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#live">Live Chess</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#faq">FAQ</a></li>
+                    <li class="nav-item"><button class="btn btn-custom ms-2" data-bs-toggle="modal" data-bs-target="#registerModal">Sign Up</button></li>
+                </ul>
             </div>
-            <ul class="nav-menu">
-                <li class="nav-item"><a href="#" class="nav-link active">Home</a></li>
-                <li class="nav-item"><a href="#tournaments" class="nav-link">Tournaments</a></li>
-                <li class="nav-item"><a href="#workshops" class="nav-link">Workshops</a></li>
-                <li class="nav-item"><a href="#live" class="nav-link">Live Chess</a></li>
-                <li class="nav-item"><a href="#" class="nav-link btn">Sign Up</a></li>
-            </ul>
         </div>
-    </header>
+    </nav>
 
     <!-- Hero Section -->
-    <section class="hero">
+    <section id="home" class="hero-section">
         <div class="chess-piece" style="top: 10%; left: 10%;">♜</div>
         <div class="chess-piece" style="top: 20%; left: 80%;">♞</div>
         <div class="chess-piece" style="top: 70%; left: 15%;">♝</div>
@@ -36,336 +492,1127 @@
         <div class="chess-piece" style="top: 30%; left: 40%;">♚</div>
         <div class="chess-piece" style="top: 80%; left: 50%;">♟</div>
         
-        <div class="container hero-content">
-            <h1>Unleash Your Strategic Potential</h1>
-            <p>Join the world's most engaging chess tournaments and workshops. Learn from grandmasters, compete with players from around the globe, and become part of our thriving chess community.</p>
-            <div>
-                <a href="#tournaments" class="btn">Explore Tournaments</a>
-                <a href="#workshops" class="btn btn-outline">Browse Workshops</a>
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-8 mx-auto text-center">
+                  <h1 class="display-3 fw-bold mb-4" style="margin-top: 100px;">Unleash Your Strategic Potential</h1>
+                    <p class="lead mb-4">Join the world's most engaging chess tournaments and workshops. Learn from grandmasters, compete with players from around the globe, and become part of our thriving chess community.</p>
+                    
+                    <div class="hero-stats justify-content-center mb-5">
+                        <div class="stat-item">
+                            <span class="stat-number">10,000+</span>
+                            <span class="stat-label">Active Players</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">250+</span>
+                            <span class="stat-label">Tournaments Hosted</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">50+</span>
+                            <span class="stat-label">Expert Instructors</span>
+                        </div>
+                    </div>
+                    
+                    <div class="d-flex gap-3 justify-content-center flex-wrap">
+                        <a href="#tournaments" class="btn btn-custom btn-lg">Explore Tournaments</a>
+                        <a href="#workshops" class="btn btn-outline-custom btn-lg">Browse Workshops</a>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Features Section -->
-    <section class="section">
+    <section class="py-5" style="background: var(--light-bg);">
         <div class="container">
-            <h2 class="section-title">Why Choose Max chess</h2>
-            <div class="features">
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-trophy"></i>
+            <h2 class="section-title text-center">Why Choose MaxChess</h2>
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-card text-center">
+                        <div class="feature-icon mx-auto">
+                            <i class="fas fa-trophy"></i>
+                        </div>
+                        <h3 class="h5 mb-3">Expert-Led Tournaments</h3>
+                        <p>Participate in tournaments organized by chess professionals with international experience and FIDE certification.</p>
                     </div>
-                    <h3 class="feature-title">Expert-Led Tournaments</h3>
-                    <p>Participate in tournaments organized by chess professionals with international experience and FIDE certification.</p>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-chalkboard-teacher"></i>
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-card text-center">
+                        <div class="feature-icon mx-auto">
+                            <i class="fas fa-chalkboard-teacher"></i>
+                        </div>
+                        <h3 class="h5 mb-3">Masterclass Workshops</h3>
+                        <p>Learn advanced strategies and techniques from grandmasters through our interactive online workshops.</p>
                     </div>
-                    <h3 class="feature-title">Masterclass Workshops</h3>
-                    <p>Learn advanced strategies and techniques from grandmasters through our interactive online workshops.</p>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-users"></i>
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-card text-center">
+                        <div class="feature-icon mx-auto">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3 class="h5 mb-3">Vibrant Community</h3>
+                        <p>Connect with chess enthusiasts from around the world, share insights, and make lifelong friendships.</p>
                     </div>
-                    <h3 class="feature-title">Vibrant Community</h3>
-                    <p>Connect with chess enthusiasts from around the world, share insights, and make lifelong friendships.</p>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-card text-center">
+                        <div class="feature-icon mx-auto">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <h3 class="h5 mb-3">Mobile Friendly</h3>
+                        <p>Play and learn anywhere with our responsive platform that works seamlessly on all devices.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-card text-center">
+                        <div class="feature-icon mx-auto">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3 class="h5 mb-3">Progress Tracking</h3>
+                        <p>Monitor your improvement with detailed analytics and personalized performance insights.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-card text-center">
+                        <div class="feature-icon mx-auto">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3 class="h5 mb-3">Fair Play Guarantee</h3>
+                        <p>Our advanced anti-cheating system ensures fair and competitive gameplay for all participants.</p>
+                    </div>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-5">
+        <div class="container">
+            <div class="row align-items-center mb-5">
+                <div class="col-lg-6">
+                    <h2 class="section-title">About MaxChess</h2>
+                    <p class="lead">Founded in 2020 by a team of passionate chess enthusiasts and professional players, MaxChess has grown to become one of the world's leading online chess platforms.</p>
+                    
+                    <div class="mb-4">
+                        <h3 class="h5">Our Mission</h3>
+                        <p>To create a global community where chess players can learn, compete, and grow together while preserving the rich tradition and strategic depth of the ancient game.</p>
+                    </div>
+                    
+                    <div>
+                        <h3 class="h5">Our Values</h3>
+                        <ul class="list-unstyled">
+                            <li class="mb-2"><i class="fas fa-check-circle text-primary me-2"></i><strong>Excellence:</strong> We strive for the highest standards</li>
+                            <li class="mb-2"><i class="fas fa-check-circle text-primary me-2"></i><strong>Inclusivity:</strong> Chess is for everyone</li>
+                            <li class="mb-2"><i class="fas fa-check-circle text-primary me-2"></i><strong>Fair Play:</strong> We maintain game integrity</li>
+                            <li class="mb-2"><i class="fas fa-check-circle text-primary me-2"></i><strong>Innovation:</strong> Cutting-edge technology</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="bg-primary rounded-3 p-4 text-center text-white">
+                        <i class="fas fa-chess-board display-1 mb-3"></i>
+                        <h4>Chess Excellence</h4>
+                        <p>Professional tournament organization and education</p>
+                    </div>
+                </div>
+            </div>
+            
+            <h3 class="text-center mb-4">Meet Our Team</h3>
+<div class="row g-4">
+    <div class="col-lg-4 col-md-6">
+        <div class="card border-0 shadow-sm text-center">
+            <div class="card-body p-4">
+                <div class="mx-auto mb-3" style="width: 80px; height: 80px;">
+                    <img src="images/instructor-1.jpg" alt="Alex Rodriguez" class="rounded-circle w-100 h-100" style="object-fit: cover;">
+                </div>
+                <h4 class="h5">Alex Rodriguez</h4>
+                <p class="text-muted">Founder & CEO</p>
+                <p class="small">Former International Master with 15+ years of competitive experience</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4 col-md-6">
+        <div class="card border-0 shadow-sm text-center">
+            <div class="card-body p-4">
+                <div class="mx-auto mb-3" style="width: 80px; height: 80px;">
+                    <img src="images/instructor-2.jpg" alt="Maria Kowalski" class="rounded-circle w-100 h-100" style="object-fit: cover;">
+                </div>
+                <h4 class="h5">Maria Kowalski</h4>
+                <p class="text-muted">Head of Education</p>
+                <p class="small">Grandmaster and renowned chess educator with global teaching experience</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4 col-md-6">
+        <div class="card border-0 shadow-sm text-center">
+            <div class="card-body p-4">
+                <div class="mx-auto mb-3" style="width: 80px; height: 80px;">
+                    <img src="images/instructor-3.jpg" alt="David Chen" class="rounded-circle w-100 h-100" style="object-fit: cover;">
+                </div>
+                <h4 class="h5">David Chen</h4>
+                <p class="text-muted">CTO</p>
+                <p class="small">Software engineer specializing in real-time gaming platforms and AI</p>
+            </div>
+        </div>
+    </div>
+</div>
         </div>
     </section>
 
     <!-- Tournaments Section -->
-    <section id="tournaments" class="section tournaments">
-        <div class="container">
-            <h2 class="section-title">Upcoming Tournaments</h2>
-            <div class="tournament-grid">
+<section id="tournaments" class="py-5" style="background: var(--light-bg);">
+    <div class="container">
+        <h2 class="section-title text-center">Upcoming Tournaments</h2>
+        <div class="row g-4">
+            <div class="col-lg-4 col-md-6">
                 <div class="tournament-card">
                     <div class="tournament-image">
                         <img src="images/tournament-1.jpg" alt="Spring Chess Championship">
-                    </div>
-                    <div class="tournament-content">
                         <span class="tournament-date">May 15-17, 2025</span>
-                        <h3 class="tournament-title">Spring Chess Championship</h3>
-                        <p class="tournament-info">A three-day tournament featuring players from all skill levels. Cash prizes for winners in each category.</p>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="h5 mb-3">Spring Chess Championship</h3>
+                        <p class="mb-3">A three-day tournament featuring players from all skill levels. Cash prizes for winners in each category.</p>
                         <div class="tournament-meta">
-                            <span><i class="fas fa-map-marker-alt"></i> New York, NY</span>
-                            <span><i class="fas fa-user"></i> 64 Players</span>
+                            <span><i class="fas fa-map-marker-alt me-1"></i> New York, NY</span>
+                            <span><i class="fas fa-user me-1"></i> 64 Players</span>
+                            <span><i class="fas fa-dollar-sign me-1"></i> $10,000 Prize Pool</span>
+                        </div>
+                        <div class="d-flex gap-2">
+                            <button class="btn btn-custom btn-sm">Register Now</button>
+                            <button class="btn btn-outline-secondary btn-sm">Learn More</button>
                         </div>
                     </div>
                 </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
                 <div class="tournament-card">
                     <div class="tournament-image">
                         <img src="images/tournament-2.jpg" alt="Online Blitz Tournament">
-                    </div>
-                    <div class="tournament-content">
                         <span class="tournament-date">June 5-6, 2025</span>
-                        <h3 class="tournament-title">Online Blitz Tournament</h3>
-                        <p class="tournament-info">Fast-paced online tournament with 5-minute games. Open to players of all nationalities.</p>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="h5 mb-3">Online Blitz Tournament</h3>
+                        <p class="mb-3">Fast-paced online tournament with 5-minute games. Open to players of all nationalities.</p>
                         <div class="tournament-meta">
-                            <span><i class="fas fa-globe"></i> Online</span>
-                            <span><i class="fas fa-user"></i> Unlimited</span>
+                            <span><i class="fas fa-globe me-1"></i> Online</span>
+                            <span><i class="fas fa-user me-1"></i> Unlimited</span>
+                            <span><i class="fas fa-dollar-sign me-1"></i> $5,000 Prize Pool</span>
+                        </div>
+                        <div class="d-flex gap-2">
+                            <button class="btn btn-custom btn-sm">Register Now</button>
+                            <button class="btn btn-outline-secondary btn-sm">Learn More</button>
                         </div>
                     </div>
                 </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
                 <div class="tournament-card">
                     <div class="tournament-image">
                         <img src="images/tournament-3.jpg" alt="Junior Chess Open">
-                    </div>
-                    <div class="tournament-content">
                         <span class="tournament-date">July 10-12, 2025</span>
-                        <h3 class="tournament-title">Junior Chess Open</h3>
-                        <p class="tournament-info">Special tournament for players under 18. Great opportunity for young talents to showcase their skills.</p>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="h5 mb-3">Junior Chess Open</h3>
+                        <p class="mb-3">Special tournament for players under 18. Great opportunity for young talents to showcase their skills.</p>
                         <div class="tournament-meta">
-                            <span><i class="fas fa-map-marker-alt"></i> London, UK</span>
-                            <span><i class="fas fa-user"></i> 32 Players</span>
+                            <span><i class="fas fa-map-marker-alt me-1"></i> London, UK</span>
+                            <span><i class="fas fa-user me-1"></i> 32 Players</span>
+                            <span><i class="fas fa-dollar-sign me-1"></i> $3,000 Prize Pool</span>
+                        </div>
+                        <div class="d-flex gap-2">
+                            <button class="btn btn-custom btn-sm">Register Now</button>
+                            <button class="btn btn-outline-secondary btn-sm">Learn More</button>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="text-center mt-3">
-                <a href="#" class="btn">View All Tournaments</a>
-            </div>
         </div>
-    </section>
+        <div class="text-center mt-4">
+            <a href="#" class="btn btn-custom btn-lg">View All Tournaments</a>
+        </div>
+    </div>
+</section>
 
     <!-- Workshops Section -->
-    <section id="workshops" class="section">
-        <div class="container">
-            <h2 class="section-title">Chess Workshops</h2>
-            <div class="workshops-grid">
+<section id="workshops" class="py-5">
+    <div class="container">
+        <h2 class="section-title text-center">Chess Workshops</h2>
+        <div class="row g-4">
+            <div class="col-lg-4 col-md-6">
                 <div class="workshop-card">
                     <div class="workshop-image">
-                        <img src="images/workshop-1.jpg" alt="Chess Fundamentals">
+                        <img src="images/workshop-1.jpg" alt="Chess Fundamentals Workshop">
                         <span class="workshop-level">Beginner</span>
                     </div>
-                    <div class="workshop-content">
-                        <h3 class="workshop-title">Chess Fundamentals</h3>
-                        <div class="workshop-instructor">
-                            <div class="instructor-avatar">
-                                <img src="images/instructor-1.jpg" alt="Sarah Johnson">
+                    <div class="p-4">
+                        <h3 class="h5 mb-3">Chess Fundamentals</h3>
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="bg-primary rounded-circle me-3 d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+                                <i class="fas fa-user text-white"></i>
                             </div>
                             <div>
-                                <strong>Sarah Johnson</strong>
-                                <div>FIDE Master</div>
+                                <strong class="d-block">Sarah Johnson</strong>
+                                <small class="text-muted">FIDE Master</small>
                             </div>
                         </div>
-                        <p>Master the basics of chess with this comprehensive course for beginners. Learn piece movements, basic tactics, and essential strategies.</p>
-                        <div class="workshop-footer">
-                            <div>
-                                <i class="far fa-clock"></i> 8 Sessions
+                        <p class="mb-3">Master the basics of chess with this comprehensive course for beginners. Learn piece movements, basic tactics, and essential strategies.</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="small text-muted">
+                                <i class="far fa-clock me-1"></i> 8 Sessions
                             </div>
-                            <div class="workshop-price">$99</div>
+                            <div class="fw-bold fs-5">$99</div>
                         </div>
                     </div>
                 </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
                 <div class="workshop-card">
                     <div class="workshop-image">
-                        <img src="images/workshop-2.jpg" alt="Advanced Openings">
+                         <img src="images/workshop-2.jpg" alt="Advanced Openings Workshop">
                         <span class="workshop-level">Intermediate</span>
                     </div>
-                    <div class="workshop-content">
-                        <h3 class="workshop-title">Advanced Openings</h3>
-                        <div class="workshop-instructor">
-                            <div class="instructor-avatar">
-                                <img src="images/instructor-2.jpg" alt="Michael Chen">
+                    <div class="p-4">
+                        <h3 class="h5 mb-3">Advanced Openings</h3>
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="bg-primary rounded-circle me-3 d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+                                <i class="fas fa-user text-white"></i>
                             </div>
                             <div>
-                                <strong>Michael Chen</strong>
-                                <div>International Master</div>
+                                <strong class="d-block">Michael Chen</strong>
+                                <small class="text-muted">International Master</small>
                             </div>
                         </div>
-                        <p>Dive deep into strategic opening play. Master powerful opening systems and learn how to counter common responses from your opponents.</p>
-                        <div class="workshop-footer">
-                            <div>
-                                <i class="far fa-clock"></i> 6 Sessions
+                        <p class="mb-3">Dive deep into strategic opening play. Master powerful opening systems and learn how to counter common responses.</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="small text-muted">
+                                <i class="far fa-clock me-1"></i> 6 Sessions
                             </div>
-                            <div class="workshop-price">$149</div>
+                            <div class="fw-bold fs-5">$149</div>
                         </div>
                     </div>
                 </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
                 <div class="workshop-card">
                     <div class="workshop-image">
-                        <img src="images/workshop-3.jpg" alt="Grandmaster Endgame Techniques">
+                         <img src="images/workshop-3.jpg" alt="Endgame Mastery Workshop">
                         <span class="workshop-level">Advanced</span>
                     </div>
-                    <div class="workshop-content">
-                        <h3 class="workshop-title">Grandmaster Endgame Techniques</h3>
-                        <div class="workshop-instructor">
-                            <div class="instructor-avatar">
-                                <img src="images/instructor-3.jpg" alt="Elena Petrov">
+                    <div class="p-4">
+                        <h3 class="h5 mb-3">Endgame Mastery</h3>
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="bg-primary rounded-circle me-3 d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+                                <i class="fas fa-user text-white"></i>
                             </div>
                             <div>
-                                <strong>Elena Petrov</strong>
-                                <div>Grandmaster</div>
+                                <strong class="d-block">Elena Petrov</strong>
+                                <small class="text-muted">Grandmaster</small>
                             </div>
                         </div>
-                        <p>Learn the endgame techniques used by top grandmasters. This workshop will significantly improve your ability to convert advantages into wins.</p>
-                        <div class="workshop-footer">
-                            <div>
-                                <i class="far fa-clock"></i> 5 Sessions
+                        <p class="mb-3">Master the art of endgames with a Grandmaster. Learn essential theoretical positions and practical techniques.</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="small text-muted">
+                                <i class="far fa-clock me-1"></i> 10 Sessions
                             </div>
-                            <div class="workshop-price">$199</div>
+                            <div class="fw-bold fs-5">$249</div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="text-center mt-3">
-                <a href="#" class="btn">View All Workshops</a>
-            </div>
         </div>
-    </section>
-
-    <!-- Testimonials -->
-    <section class="section testimonials">
-        <div class="container">
-            <h2 class="section-title">What Our Members Say</h2>
-            <div class="testimonial-container">
-                <div class="testimonial active">
-                    <div class="testimonial-avatar">
-                        <img src="images/testimonial-1.jpg" alt="John Doe">
-                    </div>
-                    <p class="testimonial-text">"Max chess transformed my approach to the game. The workshops are incredibly insightful, and the tournaments are well-organized with players from all over the world. It's more than just a chess platform; it's a community."</p>
-                    <div class="testimonial-author">John Doe</div>
-                    <div class="testimonial-position">Chess Enthusiast</div>
-                </div>
-                <div class="testimonial">
-                    <div class="testimonial-avatar">
-                        <img src="images/testimonial-2.jpg" alt="Sarah Smith">
-                    </div>
-                    <p class="testimonial-text">"As a parent of a young chess player, I've seen tremendous growth in my daughter's skills since joining Max chess. The junior tournaments provide a supportive environment for young players to develop their talents."</p>
-                    <div class="testimonial-author">Sarah Smith</div>
-                    <div class="testimonial-position">Parent</div>
-                </div>
-                <div class="testimonial">
-                    <div class="testimonial-avatar">
-                        <img src="images/testimonial-3.jpg" alt="Mark Johnson">
-                    </div>
-                    <p class="testimonial-text">"The quality of instruction at Max chess workshops is unmatched. I've participated in several online sessions, and each one has provided valuable insights that have directly improved my gameplay."</p>
-                    <div class="testimonial-author">Mark Johnson</div>
-                    <div class="testimonial-position">Club Player</div>
-                </div>
-            </div>
-            <div class="testimonial-nav">
-                <div class="testimonial-dot active" data-index="0"></div>
-                <div class="testimonial-dot" data-index="1"></div>
-                <div class="testimonial-dot" data-index="2"></div>
-            </div>
+        <div class="text-center mt-4">
+            <a href="#" class="btn btn-custom btn-lg">View All Workshops</a>
         </div>
-    </section>
+    </div>
+</section>
 
     <!-- Live Chess Section -->
-    <section id="live" class="section live-chess">
+    <section id="live" class="py-5" style="background: var(--light-bg);">
         <div class="container">
-            <h2 class="section-title">Live Chess</h2>
-            <div class="chess-board-container">
-                <div class="chess-board" id="chess-board">
-                    <!-- Chess board will be generated by JavaScript -->
+            <h2 class="section-title text-center">Play Live Chess</h2>
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <div class="chess-board mx-auto">
+                        <div class="chess-square">♜</div>
+                        <div class="chess-square">♞</div>
+                        <div class="chess-square">♝</div>
+                        <div class="chess-square">♛</div>
+                        <div class="chess-square">♚</div>
+                        <div class="chess-square">♝</div>
+                        <div class="chess-square">♞</div>
+                        <div class="chess-square">♜</div>
+                        <div class="chess-square">♟</div>
+                        <div class="chess-square">♟</div>
+                        <div class="chess-square">♟</div>
+                        <div class="chess-square">♟</div>
+                        <div class="chess-square">♟</div>
+                        <div class="chess-square">♟</div>
+                        <div class="chess-square">♟</div>
+                        <div class="chess-square">♟</div>
+                        <div class="chess-square"></div>
+                        <div class="chess-square"></div>
+                        <div class="chess-square"></div>
+                        <div class="chess-square"></div>
+                        <div class="chess-square"></div>
+                        <div class="chess-square"></div>
+                        <div class="chess-square"></div>
+                        <div class="chess-square"></div>
+                        <div class="chess-square"></div>
+                        <div class="chess-square"></div>
+                        <div class="chess-square"></div>
+                        <div class="chess-square"></div>
+                        <div class="chess-square"></div>
+                        <div class="chess-square"></div>
+                        <div class="chess-square"></div>
+                        <div class="chess-square"></div>
+                        <div class="chess-square"></div>
+                        <div class="chess-square"></div>
+                        <div class="chess-square"></div>
+                        <div class="chess-square"></div>
+                        <div class="chess-square"></div>
+                        <div class="chess-square"></div>
+                        <div class="chess-square"></div>
+                        <div class="chess-square"></div>
+                        <div class="chess-square"></div>
+                        <div class="chess-square"></div>
+                        <div class="chess-square"></div>
+                        <div class="chess-square"></div>
+                        <div class="chess-square"></div>
+                        <div class="chess-square"></div>
+                        <div class="chess-square"></div>
+                        <div class="chess-square"></div>
+                        <div class="chess-square">♙</div>
+                        <div class="chess-square">♙</div>
+                        <div class="chess-square">♙</div>
+                        <div class="chess-square">♙</div>
+                        <div class="chess-square">♙</div>
+                        <div class="chess-square">♙</div>
+                        <div class="chess-square">♙</div>
+                        <div class="chess-square">♙</div>
+                        <div class="chess-square">♖</div>
+                        <div class="chess-square">♘</div>
+                        <div class="chess-square">♗</div>
+                        <div class="chess-square">♕</div>
+                        <div class="chess-square">♔</div>
+                        <div class="chess-square">♗</div>
+                        <div class="chess-square">♘</div>
+                        <div class="chess-square">♖</div>
+                    </div>
                 </div>
-                <div class="chess-controls">
-                    <button class="chess-control-btn" id="start-btn">New Game</button>
-                    <button class="chess-control-btn" id="reset-btn">Reset</button>
+                <div class="col-lg-6">
+                    <h3 class="mb-4">Challenge Players Worldwide</h3>
+                    <p class="lead mb-4">Experience real-time chess with players from around the globe. Choose your time control and find the perfect match for your skill level.</p>
+                    
+                    <div class="row g-3 mb-4">
+                        <div class="col-sm-6">
+                            <div class="card bg-light border-0 p-3 text-center">
+                                <i class="fas fa-bolt text-warning fs-2 mb-2"></i>
+                                <h5>Blitz Chess</h5>
+                                <p class="small mb-0">3-5 minute games</p>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="card bg-light border-0 p-3 text-center">
+                                <i class="fas fa-clock text-info fs-2 mb-2"></i>
+                                <h5>Rapid Chess</h5>
+                                <p class="small mb-0">10-30 minute games</p>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="card bg-light border-0 p-3 text-center">
+                                <i class="fas fa-chess text-success fs-2 mb-2"></i>
+                                <h5>Classical</h5>
+                                <p class="small mb-0">60+ minute games</p>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="card bg-light border-0 p-3 text-center">
+                                <i class="fas fa-users text-primary fs-2 mb-2"></i>
+                                <h5>Team Matches</h5>
+                                <p class="small mb-0">Group competitions</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="d-flex gap-3">
+                        <button class="btn btn-custom btn-lg">Start Playing</button>
+                        <button class="btn btn-outline-secondary btn-lg">Watch Live Games</button>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Newsletter -->
-    <section class="newsletter">
-        <div class="container newsletter-container">
-            <h2 class="newsletter-title">Stay Updated</h2>
-            <p>Subscribe to our newsletter to receive updates about upcoming tournaments, workshops, and chess news.</p>
-            <form class="newsletter-form">
-                <input type="email" class="newsletter-input" placeholder="Your email address" required>
-                <button type="submit" class="newsletter-btn">Subscribe</button>
-            </form>
+    <!-- Testimonials Section -->
+    <section class="py-5">
+<div class="container">
+    <h2 class="section-title text-center">What Our Players Say</h2>
+    <div class="row g-4">
+        <div class="col-lg-4 col-md-6">
+            <div class="testimonial-card">
+                <div class="testimonial-avatar" style="background-image: url('images/testimonial-1.jpg');"></div>
+                <div class="testimonial-rating mb-3">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <p class="mb-3">"MaxChess has completely transformed my game. The workshops are incredibly well-structured and the instructors are world-class."</p>
+                <h6 class="mb-1">John Smith</h6>
+                <small class="text-muted">Amateur Player</small>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+            <div class="testimonial-card">
+                <div class="testimonial-avatar" style="background-image: url('images/testimonial-2.jpg');"></div>
+                <div class="testimonial-rating mb-3">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <p class="mb-3">"The tournament organization is flawless. I've participated in 5 events and each one exceeded my expectations."</p>
+                <h6 class="mb-1">Lisa Johnson</h6>
+                <small class="text-muted">Club Player</small>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+            <div class="testimonial-card">
+                <div class="testimonial-avatar" style="background-image: url('images/testimonial-3.jpg');"></div>
+                <div class="testimonial-rating mb-3">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <p class="mb-3">"As a parent, I love how MaxChess provides a safe and educational environment for my daughter to improve her chess skills."</p>
+                <h6 class="mb-1">Robert Davis</h6>
+                <small class="text-muted">Parent</small>
+            </div>
+        </div>
+    </div>
+</div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="py-5" style="background: var(--light-bg);">
+        <div class="container">
+            <h2 class="section-title text-center">Frequently Asked Questions</h2>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="faq-item">
+                        <button class="faq-question" onclick="toggleFAQ(this)">
+                            How do I register for tournaments?
+                            <i class="fas fa-chevron-down ms-auto"></i>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Simply create an account, browse our tournaments section, and click "Register Now" on any tournament that interests you. You'll need to complete your profile and make payment to secure your spot.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <button class="faq-question" onclick="toggleFAQ(this)">
+                            Are the workshops suitable for beginners?
+                            <i class="fas fa-chevron-down ms-auto"></i>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Absolutely! We offer workshops for all skill levels, from complete beginners to advanced players. Each workshop is clearly labeled with its difficulty level to help you choose the right one.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <button class="faq-question" onclick="toggleFAQ(this)">
+                            What equipment do I need for online tournaments?
+                            <i class="fas fa-chevron-down ms-auto"></i>
+                        </button>
+                        <div class="faq-answer">
+                            <p>For online tournaments, you'll need a stable internet connection, a computer or tablet, and a quiet environment. We recommend using a headset for clear communication during team events.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <button class="faq-question" onclick="toggleFAQ(this)">
+                            How are prizes distributed?
+                            <i class="fas fa-chevron-down ms-auto"></i>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Prizes are distributed based on final rankings in each tournament category. Prize money is typically awarded to the top 3-5 finishers, with the exact distribution detailed in each tournament's rules.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <button class="faq-question" onclick="toggleFAQ(this)">
+                            Can I get a refund if I can't attend?
+                            <i class="fas fa-chevron-down ms-auto"></i>
+                        </button>
+                        <div class="faq-answer">
+                            <p>We offer full refunds if you cancel at least 48 hours before the event start time. Cancellations within 48 hours are eligible for a 50% refund, subject to our terms and conditions.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-5">
+        <div class="container">
+            <h2 class="section-title text-center">Get In Touch</h2>
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <div class="text-center">
+                        <div class="contact-icon mx-auto">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <h4 class="h5">Email Us</h4>
+                        <p class="text-muted">info@maxchess.com<br>support@maxchess.com</p>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="text-center">
+                        <div class="contact-icon mx-auto">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <h4 class="h5">Call Us</h4>
+                        <p class="text-muted">+1 (555) 123-4567<br>Mon-Fri 9AM-6PM EST</p>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="text-center">
+                        <div class="contact-icon mx-auto">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <h4 class="h5">Visit Us</h4>
+                        <p class="text-muted">123 Chess Avenue<br>New York, NY 10001</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row justify-content-center mt-5">
+                <div class="col-lg-8">
+                    <form class="bg-white p-4 rounded-3 shadow-sm">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label for="name" class="form-label">Name</label>
+                                <input type="text" class="form-control" id="name" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="email" required>
+                            </div>
+                            <div class="col-12">
+                                <label for="subject" class="form-label">Subject</label>
+                                <input type="text" class="form-control" id="subject" required>
+                            </div>
+                            <div class="col-12">
+                                <label for="message" class="form-label">Message</label>
+                                <textarea class="form-control" id="message" rows="5" required></textarea>
+                            </div>
+                            <div class="col-12 text-center">
+                                <button type="submit" class="btn btn-custom btn-lg">Send Message</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter-section">
+        <div class="container">
+            <div class="row justify-content-center text-center">
+                <div class="col-lg-8">
+                    <h2 class="mb-4">Stay Updated</h2>
+                    <p class="lead mb-4">Subscribe to our newsletter for tournament announcements, chess tips, and exclusive content from grandmasters.</p>
+                    <form class="d-flex gap-3 justify-content-center flex-wrap">
+                        <input type="email" class="form-control" placeholder="Enter your email" style="max-width: 300px;">
+                        <button type="submit" class="btn btn-light btn-lg">Subscribe</button>
+                    </form>
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- Footer -->
     <footer class="footer">
-        <div class="container footer-container">
-            <div class="footer-column">
-                <h3>About Us</h3>
-                <ul class="footer-links">
-                    <li class="footer-link"><a href="#">Our Story</a></li>
-                    <li class="footer-link"><a href="#">Team</a></li>
-                    <li class="footer-link"><a href="#">Careers</a></li>
-                    <li class="footer-link"><a href="#">Press</a></li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h3>Resources</h3>
-                <ul class="footer-links">
-                    <li class="footer-link"><a href="#">Blog</a></li>
-                    <li class="footer-link"><a href="#">Chess Lessons</a></li>
-                    <li class="footer-link"><a href="#">Strategy Guides</a></li>
-                    <li class="footer-link"><a href="#">Chess News</a></li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h3>Support</h3>
-                <ul class="footer-links">
-                    <li class="footer-link"><a href="#">Help Center</a></li>
-                    <li class="footer-link"><a href="#">Contact Us</a></li>
-                    <li class="footer-link"><a href="#">FAQs</a></li>
-                    <li class="footer-link"><a href="#">Community Guidelines</a></li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h3>Connect With Us</h3>
-                <p>Follow us on social media for daily chess puzzles, tips, and updates.</p>
-                <div class="social-links">
-                    <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
-                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
-                    <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
-                    <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <h3 class="h4 mb-4"><i class="fas fa-chess-knight me-2"></i>MaxChess</h3>
+                    <p class="mb-4">Your premier destination for chess tournaments, workshops, and community. Join thousands of players improving their game every day.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-discord"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6">
+                    <h5 class="mb-3">Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#home" class="text-light text-decoration-none">Home</a></li>
+                        <li class="mb-2"><a href="#tournaments" class="text-light text-decoration-none">Tournaments</a></li>
+                        <li class="mb-2"><a href="#workshops" class="text-light text-decoration-none">Workshops</a></li>
+                        <li class="mb-2"><a href="#live" class="text-light text-decoration-none">Live Chess</a></li>
+                        <li class="mb-2"><a href="#about" class="text-light text-decoration-none">About</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-6">
+                    <h5 class="mb-3">Support</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#faq" class="text-light text-decoration-none">FAQ</a></li>
+                        <li class="mb-2"><a href="#contact" class="text-light text-decoration-none">Contact</a></li>
+                        <li class="mb-2"><a href="#" class="text-light text-decoration-none">Help Center</a></li>
+                        <li class="mb-2"><a href="#" class="text-light text-decoration-none">Rules</a></li>
+                        <li class="mb-2"><a href="#" class="text-light text-decoration-none">Fair Play</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-6">
+                    <h5 class="mb-3">Community</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#" class="text-light text-decoration-none">Forums</a></li>
+                        <li class="mb-2"><a href="#" class="text-light text-decoration-none">Discord</a></li>
+                        <li class="mb-2"><a href="#" class="text-light text-decoration-none">Blog</a></li>
+                        <li class="mb-2"><a href="#" class="text-light text-decoration-none">News</a></li>
+                        <li class="mb-2"><a href="#" class="text-light text-decoration-none">Events</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-6">
+                    <h5 class="mb-3">Legal</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#" class="text-light text-decoration-none">Privacy Policy</a></li>
+                        <li class="mb-2"><a href="#" class="text-light text-decoration-none">Terms of Service</a></li>
+                        <li class="mb-2"><a href="#" class="text-light text-decoration-none">Cookie Policy</a></li>
+                        <li class="mb-2"><a href="#" class="text-light text-decoration-none">Refund Policy</a></li>
+                    </ul>
                 </div>
             </div>
-        </div>
-        <div class="footer-bottom">
-            <div class="container">
-                <p>&copy; 2025 Max chess. All rights reserved.</p>
+            <hr class="my-4 border-secondary">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <p class="mb-0">&copy; 2025 MaxChess. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p class="mb-0">Made with <i class="fas fa-heart text-danger"></i> for chess lovers worldwide</p>
+                </div>
             </div>
         </div>
     </footer>
 
     <!-- Registration Modal -->
-    <div class="modal" id="register-modal">
-        <div class="modal-content">
-            <button class="modal-close" id="modal-close"><i class="fas fa-times"></i></button>
-            <h2 class="modal-title">Register for Max chess</h2>
-            <form id="register-form">
-                <div class="form-group">
-                    <label for="name" class="form-label">Full Name</label>
-                    <input type="text" id="name" class="form-input" required>
+    <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="registerModalLabel">Join MaxChess</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="form-group">
-                    <label for="email" class="form-label">Email Address</label>
-                    <input type="email" id="email" class="form-input" required>
+                <div class="modal-body">
+                    <form>
+                        <div class="mb-3">
+                            <label for="regName" class="form-label">Full Name</label>
+                            <input type="text" class="form-control" id="regName" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="regEmail" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="regEmail" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="regPassword" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="regPassword" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="chessLevel" class="form-label">Chess Experience</label>
+                            <select class="form-select" id="chessLevel">
+                                <option value="beginner">Beginner</option>
+                                <option value="intermediate">Intermediate</option>
+                                <option value="advanced">Advanced</option>
+                                <option value="expert">Expert</option>
+                            </select>
+                        </div>
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="agreeTerms" required>
+                            <label class="form-check-label" for="agreeTerms">
+                                I agree to the <a href="#" class="text-primary">Terms of Service</a> and <a href="#" class="text-primary">Privacy Policy</a>
+                            </label>
+                        </div>
+                    </form>
                 </div>
-                <div class="form-group">
-                    <label for="password" class="form-label">Password</label>
-                    <input type="password" id="password" class="form-input" required>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-custom">Create Account</button>
                 </div>
-                <div class="form-group">
-                    <label for="level" class="form-label">Chess Experience</label>
-                    <select id="level" class="form-select" required>
-                        <option value="">Select your level</option>
-                        <option value="beginner">Beginner</option>
-                        <option value="intermediate">Intermediate</option>
-                        <option value="advanced">Advanced</option>
-                        <option value="master">Master</option>
-                    </select>
-                </div>
-                <button type="submit" class="btn">Create Account</button>
-            </form>
+            </div>
         </div>
     </div>
 
-    <!-- Scripts -->
-    <script src="script.js"></script>
+    <!-- Back to Top Button -->
+    <button class="back-to-top" onclick="scrollToTop()">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <!-- Loading Spinner -->
+    <div class="loading-spinner" id="loadingSpinner">
+        <div class="spinner text-center">
+            <i class="fas fa-chess-knight fa-spin"></i>
+            <p class="mt-3">Loading...</p>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JavaScript -->
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Back to top button functionality
+        window.addEventListener('scroll', function() {
+            const backToTopBtn = document.querySelector('.back-to-top');
+            if (window.pageYOffset > 300) {
+                backToTopBtn.style.display = 'block';
+            } else {
+                backToTopBtn.style.display = 'none';
+            }
+        });
+
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // FAQ Toggle functionality
+        function toggleFAQ(element) {
+            const faqItem = element.parentNode;
+            const isActive = faqItem.classList.contains('active');
+            
+            // Close all FAQ items
+            document.querySelectorAll('.faq-item').forEach(item => {
+                item.classList.remove('active');
+                item.querySelector('.fa-chevron-down').style.transform = 'rotate(0deg)';
+            });
+            
+            // Open clicked item if it wasn't active
+            if (!isActive) {
+                faqItem.classList.add('active');
+                element.querySelector('.fa-chevron-down').style.transform = 'rotate(180deg)';
+            }
+        }
+
+        // Loading spinner
+        function showLoading() {
+            document.getElementById('loadingSpinner').style.display = 'flex';
+        }
+
+        function hideLoading() {
+            document.getElementById('loadingSpinner').style.display = 'none';
+        }
+
+        // Form submissions
+        document.querySelector('#contact form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            showLoading();
+            
+            // Simulate form submission
+            setTimeout(() => {
+                hideLoading();
+                alert('Thank you for your message! We\'ll get back to you soon.');
+                this.reset();
+            }, 2000);
+        });
+
+        document.querySelector('.newsletter-section form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            showLoading();
+            
+            // Simulate subscription
+            setTimeout(() => {
+                hideLoading();
+                alert('Successfully subscribed to our newsletter!');
+                this.reset();
+            }, 1500);
+        });
+
+        // Registration modal form
+        document.querySelector('#registerModal form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            showLoading();
+            
+            // Simulate registration
+            setTimeout(() => {
+                hideLoading();
+                alert('Account created successfully! Welcome to MaxChess!');
+                bootstrap.Modal.getInstance(document.getElementById('registerModal')).hide();
+                this.reset();
+            }, 2000);
+        });
+
+        // Tournament registration buttons
+        document.querySelectorAll('.tournament-card .btn-custom, .workshop-card .btn-custom').forEach(btn => {
+            btn.addEventListener('click', function() {
+                showLoading();
+                setTimeout(() => {
+                    hideLoading();
+                    alert('Registration successful! Check your email for confirmation.');
+                }, 1500);
+            });
+        });
+
+        // Chess board interactivity
+        document.querySelectorAll('.chess-square').forEach(square => {
+            square.addEventListener('click', function() {
+                // Remove previous selections
+                document.querySelectorAll('.chess-square').forEach(s => {
+                    s.style.backgroundColor = '';
+                });
+                
+                // Highlight selected square
+                this.style.backgroundColor = 'var(--secondary-color)';
+                this.style.color = 'white';
+                
+                // Reset after 1 second
+                setTimeout(() => {
+                    this.style.backgroundColor = '';
+                    this.style.color = '';
+                }, 1000);
+            });
+        });
+
+        // Animated counter for stats
+        function animateCounter(element, target) {
+            let current = 0;
+            const increment = target / 100;
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    current = target;
+                    clearInterval(timer);
+                }
+                element.textContent = Math.floor(current).toLocaleString() + '+';
+            }, 20);
+        }
+
+        // Trigger counter animation when stats come into view
+        const observerOptions = {
+            threshold: 0.5,
+            rootMargin: '0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const statNumbers = entry.target.querySelectorAll('.stat-number');
+                    statNumbers.forEach((stat, index) => {
+                        const targets = [10000, 250, 50];
+                        setTimeout(() => {
+                            animateCounter(stat, targets[index]);
+                        }, index * 200);
+                    });
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        // Observe the hero stats section
+        const heroStats = document.querySelector('.hero-stats');
+        if (heroStats) {
+            observer.observe(heroStats);
+        }
+
+        // Add hover effects to cards
+        document.querySelectorAll('.feature-card, .tournament-card, .workshop-card, .testimonial-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+            });
+        });
+
+        // Navbar background change on scroll
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.pageYOffset > 50) {
+                navbar.style.backgroundColor = 'rgba(52, 58, 64, 0.95)';
+                navbar.style.backdropFilter = 'blur(10px)';
+            } else {
+                navbar.style.backgroundColor = '#343a40';
+                navbar.style.backdropFilter = 'none';
+            }
+        });
+
+        // Chess piece floating animation timing
+        document.querySelectorAll('.chess-piece').forEach((piece, index) => {
+            piece.style.animationDelay = `${index * 0.5}s`;
+        });
+
+        // Initialize tooltips if needed
+        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+        var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+            return new bootstrap.Tooltip(tooltipTriggerEl);
+        });
+
+        // Live game status simulation
+        function updateLiveStats() {
+            const liveGameCount = Math.floor(Math.random() * 100) + 200;
+            const activePlayersCount = Math.floor(Math.random() * 500) + 1000;
+            
+            // Update if elements exist
+            const liveGamesEl = document.querySelector('#live-games');
+            const activePlayersEl = document.querySelector('#active-players');
+            
+            if (liveGamesEl) liveGamesEl.textContent = liveGameCount;
+            if (activePlayersEl) activePlayersEl.textContent = activePlayersCount;
+        }
+
+        // Update live stats every 30 seconds
+        setInterval(updateLiveStats, 30000);
+        updateLiveStats(); // Initial call
+
+        // Add active class to current nav item based on scroll position
+        window.addEventListener('scroll', function() {
+            let current = '';
+            const sections = document.querySelectorAll('section[id]');
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            document.querySelectorAll('.navbar-nav .nav-link').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Keyboard shortcuts
+        document.addEventListener('keydown', function(e) {
+            // Press 'Escape' to close modals
+            if (e.key === 'Escape') {
+                const openModal = document.querySelector('.modal.show');
+                if (openModal) {
+                    bootstrap.Modal.getInstance(openModal).hide();
+                }
+            }
+            
+            // Press 'Home' to scroll to top
+            if (e.key === 'Home' && e.ctrlKey) {
+                e.preventDefault();
+                scrollToTop();
+            }
+        });
+
+        // Performance optimization: Lazy load images
+        if ('IntersectionObserver' in window) {
+            const imageObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        img.src = img.dataset.src;
+                        img.classList.remove('lazy');
+                        imageObserver.unobserve(img);
+                    }
+                });
+            });
+
+            document.querySelectorAll('img[data-src]').forEach(img => {
+                imageObserver.observe(img);
+            });
+        }
+
+        // Add loading states to buttons
+        function addLoadingState(button, duration = 2000) {
+            const originalText = button.innerHTML;
+            button.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Loading...';
+            button.disabled = true;
+            
+            setTimeout(() => {
+                button.innerHTML = originalText;
+                button.disabled = false;
+            }, duration);
+        }
+
+        // Apply loading states to action buttons
+        document.querySelectorAll('.btn-custom').forEach(btn => {
+            if (!btn.hasAttribute('data-bs-toggle')) {
+                btn.addEventListener('click', function(e) {
+                    if (!this.disabled) {
+                        addLoadingState(this);
+                    }
+                });
+            }
+        });
+
+        // Console welcome message
+        console.log(`
+        ♔ Welcome to MaxChess! ♔
+        
+        Thanks for exploring our platform.
+        If you're a developer interested in our tech stack
+        or have suggestions, feel free to reach out!
+        
+        Built with ❤️ for chess lovers worldwide.
+        `);
+
+        // Add some Easter eggs
+        let konamiCode = [];
+        const expectedCode = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65]; // ↑↑↓↓←→←→BA
+
+        document.addEventListener('keydown', function(e) {
+            konamiCode.push(e.keyCode);
+            if (konamiCode.length > expectedCode.length) {
+                konamiCode.shift();
+            }
+            
+            if (konamiCode.length === expectedCode.length && 
+                konamiCode.every((code, index) => code === expectedCode[index])) {
+                
+                // Easter egg activated!
+                document.body.style.animation = 'hue-rotate 2s infinite linear';
+                setTimeout(() => {
+                    document.body.style.animation = '';
+                    alert('🎉 Konami Code activated! You found the Easter egg! 🎉');
+                }, 2000);
+                
+                konamiCode = [];
+            }
+        });
+
+        // Add CSS animation for Easter egg
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes hue-rotate {
+                0% { filter: hue-rotate(0deg); }
+                100% { filter: hue-rotate(360deg); }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
 </body>
 </html>
